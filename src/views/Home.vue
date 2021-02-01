@@ -1,8 +1,8 @@
 <template>
-  <div class="home">
+  <section class="home">
     <Card v-for="( item, index ) in cards" :key="index" :data="item"
     />
-  </div>
+  </section>
 </template>
 
 <script>
@@ -44,3 +44,12 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  .home {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 30px;
+    padding: 2rem .625rem;
+  }
+</style>

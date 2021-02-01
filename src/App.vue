@@ -5,5 +5,14 @@
 </template>
 
 <style lang="scss">
+  body {
+    margin: 0;
+  }
 
+  figure {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+  }
 </style>
