@@ -1,13 +1,15 @@
 <template>
   <article class='article'>
-      <a :href='urlArticle' target='_blank'>
-        <figure>
-          <img :src='thumbnail' :alt='altImage'>
-          <figcaption>
-                <a :href='folderUrl' target='_blank'>{{folderName}}</a>
-                <time :datetime='dateTime'>{{sincePublished}}</time>
+      <a :href='urlArticle' target='_blank' class='article-link'>
+        <figure class='article-link-thumb'>
+          <img :src='thumbnail' :alt='altImage' class='article-link-thumb-img'>
+          <figcaption class='article-link-thumb-caption'>
+                <a :href='folderUrl' target='_blank' class='article-link-thumb-caption-link'>{{folderName}}</a>
+                <time :datetime='dateTime' class='article-link-thumb-caption-date'>{{sincePublished}}</time>
             </figcaption>
         </figure>
+        <h3 class='article-link-title'>{{title}}</h3>
+        <p class='article-link-lead'>{{lead}}</p>
       </a>
   </article>
 </template>
@@ -61,6 +63,16 @@ export default {
             get: function () {
                 return this.data.folder.name;
             }
+        },
+        title: {
+            get: function () {
+                return this.data.title;
+            }
+        },
+        lead: {
+            get: function () {
+                return this.data.lead;
+            }
         }
     },
 }
@@ -70,28 +82,67 @@ export default {
     .article {
         grid-column: 1 / span 12;
         width: 100%;
-    }
+        font-family: Quicksand,sans-serif;
+    
+        &-link {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: #323232;
 
-    .article > a {
-        display: flex;
-        flex-direction: column;
-
-        figure {
-            position: relative;
-            width: 100%;
-            padding-top: 56.25%;
-
-            img {
-                position: absolute;
-                left: 0;
-                top: 0;
+            &-thumb {
+                position: relative;
                 width: 100%;
-                height: auto;
+                padding-top: 56.25%;
+
+                &-img {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: auto;
+                    border-radius: 1.875rem 1.875rem 1.875rem 0;
+                }
+
+                &-caption {
+                    font-size: .75rem;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    background: rgba(50,50,50,.7);
+                    backdrop-filter: blur(10px) saturate(300%);
+                    border-bottom-right-radius: 1.875rem;
+                    color: white;
+                    display: flex;
+                    justify-content: space-between;
+                    padding: .5rem 1rem;
+                    font-size: .6875rem;
+                    font-weight: 300;
+
+                    &-link {
+                        color: white;
+                        text-decoration: none;
+                    }
+
+                    &-date {
+                        padding-right: .5rem;
+                    }
+                }
             }
 
-            figcaption {
-                font-size: .75rem;
+            &-title {
+                padding: .625rem .9375rem;
+                font-size: 1.375rem;
+                line-height: 1.25;
+                font-family: 'Source Sans Pro', sans-serif;
+                font-weight: 700;
             }
-        } 
+
+            &-lead {
+                padding: 0 .9375rem;
+                font-size: 1.0625rem;
+            }
+        }
     }
 </style>

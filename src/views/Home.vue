@@ -49,7 +49,7 @@ export default {
   .home {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-gap: 30px;
+    grid-gap: 1.875rem;
     padding: 2rem .625rem;
   }
 </style>
