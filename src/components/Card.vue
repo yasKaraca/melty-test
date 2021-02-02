@@ -126,17 +126,39 @@ export default {
                     color: white;
                     display: flex;
                     justify-content: space-between;
-                    padding: .5rem 1rem;
                     font-size: .6875rem;
                     font-weight: 300;
 
                     &-link {
                         color: white;
                         text-decoration: none;
+                        display: block;
+                        position: relative;
+                        padding: .5rem 0 .5rem 1rem;
+
+                        &::after {
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
+                            display: block;
+                            content: "";
+                            width: 30px;
+                            height: 1px;
+                            background: #14f032;
+                            -webkit-transition: width .25s;
+                            transition: width .25s;
+                            pointer-events: none;
+                        }
+                    }
+
+                    &-link:hover {
+                        &::after {
+                            width: calc(100% + 30px);
+                        }
                     }
 
                     &-date {
-                        padding-right: .5rem;
+                        padding: .5rem 1.5rem .5rem 0;
                     }
                 }
             }
