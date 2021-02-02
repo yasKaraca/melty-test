@@ -1,5 +1,5 @@
 <template>
-  <article class='article'>
+  <article class='article' :class="{ mcq: isMcq }">
       <a :href='urlArticle' target='_blank' class='article-link'>
         <figure class='article-link-thumb'>
           <img :src='thumbnail' :alt='altImage' class='article-link-thumb-img'>
@@ -9,7 +9,10 @@
             </figcaption>
         </figure>
         <h3 class='article-link-title'>{{title}}</h3>
-        <p class='article-link-lead'>{{lead}}</p>
+        <div v-if="isMcq" class='article-link-quizz'>
+            <p class='article-link-quizz-cta'>participer</p>
+        </div>
+        <p v-else class='article-link-lead'>{{lead}}</p>
       </a>
   </article>
 </template>
@@ -22,7 +25,7 @@ moment.locale('fr');
 export default {
     data: () => {
         return {
-
+            mcqKey: 'Article<MultipleChoice>'
         }
     },
     props: {
@@ -72,6 +75,11 @@ export default {
         lead: {
             get: function () {
                 return this.data.lead;
+            }
+        },
+        isMcq: {
+            get: function () {
+                return ( this.data.kind === this.mcqKey ? true : false );
             }
         }
     },
@@ -172,6 +180,21 @@ export default {
                 transition: color .25s;
             }
 
+            &-quizz {
+                display: flex;
+                justify-content: center;
+                margin-bottom: .9375rem;
+
+                &-cta {
+                    text-transform: uppercase;
+                    line-height: 1.15;
+                    -webkit-box-shadow: inset 0 -6px #14f032;
+                    box-shadow: inset 0 -6px #14f032;
+                    font-size: .9375rem;
+                    font-weight: 700;
+                }
+            }
+
             &-lead {
                 padding: 0 .9375rem;
                 font-size: 1.0625rem;
@@ -191,6 +214,12 @@ export default {
             .article-link-thumb-img {
                 -webkit-transform: scale3d(1.1,1.1,1);
                 transform: scale3d(1.1,1.1,1);
+            }
+        }
+
+        &.mcq {
+            .article-link-title {
+                padding: 1.25rem .9375rem;
             }
         }
     }

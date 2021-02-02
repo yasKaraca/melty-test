@@ -50,7 +50,8 @@ export default {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-gap: 1.875rem;
-    padding: 2rem .625rem;
+    //padding: 2rem .625rem;
+    padding: 0 calc(env(safe-area-inset-right) + 10px) 0 calc(env(safe-area-inset-left) + 10px);
   }
 
   @media (min-width: 720px) and (max-width: 1160px) {
