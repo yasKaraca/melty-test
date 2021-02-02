@@ -21,8 +21,8 @@
 import moment from 'moment';
 moment.locale('fr');
 
-
 export default {
+    name: 'Card',
     data: () => {
         return {
             mcqKey: 'Article<MultipleChoice>'
@@ -87,6 +87,10 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+    $black: #323232;
+    $green: #14f032;
+    $white: #ffffff;
+
     .article {
         grid-column: 1 / span 12;
         width: 100%;
@@ -96,7 +100,7 @@ export default {
             display: flex;
             flex-direction: column;
             text-decoration: none;
-            color: #323232;
+            color: $black;
 
             &-thumb {
                 position: relative;
@@ -131,14 +135,14 @@ export default {
                     background: rgba(50,50,50,.7);
                     backdrop-filter: blur(10px) saturate(300%);
                     border-bottom-right-radius: 1.875rem;
-                    color: white;
+                    color: $white;
                     display: flex;
                     justify-content: space-between;
                     font-size: .6875rem;
                     font-weight: 300;
 
                     &-link {
-                        color: white;
+                        color: $white;
                         text-decoration: none;
                         display: block;
                         position: relative;
@@ -152,7 +156,7 @@ export default {
                             content: "";
                             width: 30px;
                             height: 1px;
-                            background: #14f032;
+                            background: $green;
                             -webkit-transition: width .25s;
                             transition: width .25s;
                             pointer-events: none;
@@ -188,7 +192,7 @@ export default {
                 &-cta {
                     text-transform: uppercase;
                     line-height: 1.15;
-                    -webkit-box-shadow: inset 0 -6px #14f032;
+                    -webkit-box-shadow: inset 0 -6px $green;
                     box-shadow: inset 0 -6px #14f032;
                     font-size: .9375rem;
                     font-weight: 700;
@@ -208,7 +212,7 @@ export default {
 
         &:hover {
             .article-link-title {
-                color: #14f032;
+                color: $green;
             }
 
             .article-link-thumb-img {

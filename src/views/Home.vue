@@ -46,25 +46,34 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  $desktop: 1160px;
+  $tablet: 720px;
+  $cards: 6;
+
+  //  GRID LAYOUT FOR MOBILE
+
   .home {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-gap: 1.875rem;
-    //padding: 2rem .625rem;
-    padding: 0 calc(env(safe-area-inset-right) + 10px) 0 calc(env(safe-area-inset-left) + 10px);
+    padding: 2rem .625rem;
   }
 
-  @media (min-width: 720px) and (max-width: 1160px) {
-    @for $i from 1 to 6+1 {
+  //  GRID LAYOUT FOR TABLET
+  
+  @media (min-width: $tablet) and (max-width: $desktop) {
+    @for $i from 1 to $cards+1 {
       .home article:nth-child(#{$i}) {
         @if $i % 2 == 0 {
-          grid-column: 7 / span 6;
+          grid-column: 7 / span 6;  // ALIGN RIGHT
         } @else {
-          grid-column: 1 / span 6;
+          grid-column: 1 / span 6;  // ALIGN LEFT
         }
       }
     }
   }
+
+  // GRID LAYOUT FOR DESKTOP
 
   @media (min-width: 1160px) {
     .home {
@@ -76,11 +85,11 @@ export default {
     @for $i from 1 to 6+1 {
       .home article:nth-child(#{$i}) {
         @if $i % 3 == 1 {
-          grid-column: 1 / span 4;
+          grid-column: 1 / span 4;  // ALIGN LEFT
         } @else if $i % 3 == 2 {
-          grid-column: 5 / span 4;
+          grid-column: 5 / span 4;  // ALIGN CENTER
         } @else if $i % 3 == 0 {
-          grid-column: 9 / span 4;
+          grid-column: 9 / span 4;  // ALIGN RIGHT
         }
       }
     }

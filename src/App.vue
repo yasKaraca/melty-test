@@ -5,6 +5,7 @@
 </template>
 
 <style lang="scss">
+
 html {
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
