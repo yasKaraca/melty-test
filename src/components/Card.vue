@@ -94,6 +94,9 @@ export default {
                 position: relative;
                 width: 100%;
                 padding-top: 56.25%;
+                overflow: hidden;
+                border-radius: 1.875rem 1.875rem 1.875rem 0;
+                -webkit-border-radius: 1.875rem 1.875rem 1.875rem 0;
 
                 &-img {
                     position: absolute;
@@ -101,7 +104,14 @@ export default {
                     top: 0;
                     width: 100%;
                     height: auto;
-                    border-radius: 1.875rem 1.875rem 1.875rem 0;
+                    border-radius: inherit;
+                    -webkit-transition: opacity .2s,-webkit-transform .25s;
+                    transition: opacity .2s,-webkit-transform .25s;
+                    transition: transform .25s,opacity .2s;
+                    transition: transform .25s,opacity .2s,-webkit-transform .25s;
+                    -o-object-fit: cover;
+                    object-fit: cover;
+                    transform: translateZ(0)
                 }
 
                 &-caption {
@@ -137,11 +147,23 @@ export default {
                 line-height: 1.25;
                 font-family: 'Source Sans Pro', sans-serif;
                 font-weight: 700;
+                transition: color .25s;
             }
 
             &-lead {
                 padding: 0 .9375rem;
                 font-size: 1.0625rem;
+            }
+        }
+
+        &:hover {
+            .article-link-title {
+                color: #14f032;
+            }
+
+            .article-link-thumb-img {
+                -webkit-transform: scale3d(1.1,1.1,1);
+                transform: scale3d(1.1,1.1,1);
             }
         }
     }

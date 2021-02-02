@@ -66,6 +66,12 @@ export default {
   }
 
   @media (min-width: 1160px) {
+    .home {
+      max-width: 1140px;
+      padding: 2rem 0;
+      margin: 0 auto;
+    }
+
     @for $i from 1 to 6+1 {
       .home article:nth-child(#{$i}) {
         @if $i % 3 == 1 {
