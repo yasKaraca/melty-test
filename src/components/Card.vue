@@ -117,13 +117,11 @@ export default {
                     width: 100%;
                     height: auto;
                     border-radius: inherit;
-                    -webkit-transition: opacity .2s,-webkit-transform .25s;
-                    transition: opacity .2s,-webkit-transform .25s;
-                    transition: transform .25s,opacity .2s;
                     transition: transform .25s,opacity .2s,-webkit-transform .25s;
                     -o-object-fit: cover;
                     object-fit: cover;
-                    transform: translateZ(0)
+                    transform: translateZ(0);
+                    -webkit-transform: translateZ(0)
                 }
 
                 &-caption {
@@ -134,6 +132,7 @@ export default {
                     right: 0;
                     background: rgba(50,50,50,.7);
                     backdrop-filter: blur(10px) saturate(300%);
+                    -webkit-backdrop-filter: blur(10px) saturate(300%);
                     border-bottom-right-radius: 1.875rem;
                     color: $white;
                     display: flex;
