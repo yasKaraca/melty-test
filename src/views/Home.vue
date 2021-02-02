@@ -52,4 +52,30 @@ export default {
     grid-gap: 1.875rem;
     padding: 2rem .625rem;
   }
+
+  @media (min-width: 720px) and (max-width: 1160px) {
+    @for $i from 1 to 6+1 {
+      .home article:nth-child(#{$i}) {
+        @if $i % 2 == 0 {
+          grid-column: 7 / span 6;
+        } @else {
+          grid-column: 1 / span 6;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 1160px) {
+    @for $i from 1 to 6+1 {
+      .home article:nth-child(#{$i}) {
+        @if $i % 3 == 1 {
+          grid-column: 1 / span 4;
+        } @else if $i % 3 == 2 {
+          grid-column: 5 / span 4;
+        } @else if $i % 3 == 0 {
+          grid-column: 9 / span 4;
+        }
+      }
+    }
+  }
 </style>
