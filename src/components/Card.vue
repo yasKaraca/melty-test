@@ -153,6 +153,11 @@ export default {
             &-lead {
                 padding: 0 .9375rem;
                 font-size: 1.0625rem;
+                display: -webkit-box;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
             }
         }
 
